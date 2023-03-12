@@ -1,34 +1,38 @@
-import logging
-import logging.handlers
-import os
-
 import requests
+import yfinance as yf
+def msg(message):
+    print(message)
+    news = message.replace("(","").replace(")","").replace(".",",").replace("-","/")
+    bot_token = '5041715929:AAFcraPI9-8jZR0bLkquRDNUXg96tEUKje4'
+    bot_chatID = '1259144189'
+    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id='+ bot_chatID + '&parse_mode=MarkdownV2&text=' + news
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-logger_file_handler = logging.handlers.RotatingFileHandler(
-    "status.log",
-    maxBytes=1024 * 1024,
-    backupCount=1,
-    encoding="utf8",
-)
-formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-logger_file_handler.setFormatter(formatter)
-logger.addHandler(logger_file_handler)
+    response = requests.get(send_text)
+    print(response.json())
+    return response.json()
 
-try:
-    SOME_SECRET = os.environ["SOME_SECRET"]
-except KeyError:
-    SOME_SECRET = "Token not available!"
-    #logger.info("Token not available!")
-    #raise
+def get_current_price(symbol):
+    ticker = yf.Ticker(symbol)
+    todays_data = ticker.history(period='1d')
+    return todays_data['Close'][0]
 
+ticker = ['HINDUNILVR.NS','RECLTD.NS','JPPOWER.NS']
 
-if __name__ == "__main__":
-    logger.info(f"Token value: {SOME_SECRET}")
+msg("WatchList")
+for i in ticker:
+    txt = str(i) + ' ' + str(get_current_price(i))
+    msg(txt)
 
-    r = requests.get('https://weather.talkpython.fm/api/weather/?city=Berlin&country=DE')
-    if r.status_code == 200:
-        data = r.json()
-        temperature = data["forecast"]["temp"]
-        logger.info(f'Weather in Berlin: {temperature}')
+msg("Portfolio")
+port = {
+    "TCS.NS" : 2,
+    "WIPRO.NS" : 2,
+    "INFY.NS" : 1,
+    "NTPC.NS" : 5,
+    "HINDUNILVR.NS":3
+}
+sum = 0
+for i in port:
+    sum = int(int(get_current_price(i))*port[i]) + sum 
+txt = "Portfolio " + str(sum) + " of 17795"
+msg(str(txt))
