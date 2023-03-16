@@ -1,21 +1,23 @@
 name: run main.py
 
 on:
- workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-        type: choice
-        options:
-        - info
-        - warning
-        - debug
-      tags:
-        description: 'Test scenario tags'
-        required: false
-        type: boolean
+#  workflow_dispatch:
+#     inputs:
+#       logLevel:
+#         description: 'Log level'
+#         required: true
+#         default: 'warning'
+#         type: choice
+#         options:
+#         - info
+#         - warning
+#         - debug
+#       tags:
+#         description: 'Test scenario tags'
+#         required: false
+#         type: boolean
+  schedule:
+    - cron: '0/6 * * * *' # At 00:00 on Monday
    
       
 jobs:
