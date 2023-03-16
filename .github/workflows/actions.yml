@@ -38,7 +38,7 @@ jobs:
         id: myCache
         uses: actions/cache@v2
         with:
-             path: ~/.cache/pip
+             path: ~/.cache/
              key: ${{ hashFiles('main.py') }}-${{ hashFiles('requirements.txt') }}
       
       - name: Install Dependencies
