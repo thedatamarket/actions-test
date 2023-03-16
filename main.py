@@ -27,7 +27,7 @@ logger_file_handler = logging.handlers.RotatingFileHandler(
     backupCount=1,
     encoding="utf8",
 )
-formatter = logging.Formatter("%(asctime)s, %(message)s")
+formatter = logging.Formatter("%(message)s")
 logger_file_handler.setFormatter(formatter)
 logger.addHandler(logger_file_handler)
 
