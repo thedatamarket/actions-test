@@ -20,12 +20,12 @@ def msg(message):
     return response.json()
 
 try:
-    consumer_key = os.environ["consumer_key"]
-    consumer_secret = os.environ["consumer_secret"]
-    access_token = os.environ["access_token"]
-    access_token_secret = os.environ["access_token_secret"]
+    CONSUMER_KEY = str(os.environ["CONSUMER_KEY"])
+    CONSUMER_SECRET = str(os.environ["CONSUMER_SECRET"])
+    ACCESS_TOKEN = str(os.environ["ACCESS_TOKEN"])
+    ACCESS_TOKEN_SECRET = str(os.environ["ACCESS_TOKEN_SECRET"])
 except KeyError:
-    SOME_SECRET = "Token not available!"
+    msg("Token not available!")
     #logger.info("Token not available!")
     #raise
 
