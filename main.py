@@ -19,6 +19,16 @@ def msg(message):
     print(response.json())
     return response.json()
 
+try:
+    consumer_key = os.environ["consumer_key"]
+    consumer_secret = os.environ["consumer_secret"]
+    access_token = os.environ["access_token"]
+    access_token_secret = os.environ["access_token_secret"]
+except KeyError:
+    SOME_SECRET = "Token not available!"
+    #logger.info("Token not available!")
+    #raise
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 logger_file_handler = logging.handlers.RotatingFileHandler(
@@ -31,15 +41,12 @@ formatter = logging.Formatter("%(message)s")
 logger_file_handler.setFormatter(formatter)
 logger.addHandler(logger_file_handler)
 
-# consumer_key = "gr4e3Si8YqjiTcsERE0X1KgG7"
-# consumer_secret = "gs9rbOZfVl9pBxoXXykSfhz2x5Dugf5BoocI7dUjf3n8O6ytrZ"
-# access_token = "1392839370843906050-gbehapjFj9Mbb3hxIm8qesHrnO4mmu"
-# access_token_secret = "UgDjETJODHOb16DNFQWnuJ1B96UNPKUguakNFsHjuuOzn"
 
-consumer_key = "Kk6YsDOoMrZ3dleewI5PyoFBG"
-consumer_secret = "SfNeq91UGvi7Se797iEflaOsuQ3M61nfJey04PTc3Oikz9FvBm"
-access_token = "1392839370843906050-hWAZNtev8MaisB2xdv3hPBQ7ybkm8r"
-access_token_secret = "ReY9BzjN82rHAApkuTi7j7cIYxv4YxVIYHimg6Gwd1jQ2"
+# consumer_key = "Kk6YsDOoMrZ3dleewI5PyoFBG"
+# consumer_secret = "SfNeq91UGvi7Se797iEflaOsuQ3M61nfJey04PTc3Oikz9FvBm"
+# access_token = "1392839370843906050-hWAZNtev8MaisB2xdv3hPBQ7ybkm8r"
+# access_token_secret = "ReY9BzjN82rHAApkuTi7j7cIYxv4YxVIYHimg6Gwd1jQ2"
+
 start = 0
 try:
     if start == 0:
