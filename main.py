@@ -52,16 +52,16 @@ start = 0
 try:
     if start == 0:
         twitter = Twython(
-            consumer_key,
-            consumer_secret,
-            access_token,
-            access_token_secret
+            CONSUMER_KEY,
+            CONSUMER_SECRET,
+            ACCESS_TOKEN,
+            ACCESS_TOKEN_SECRET
         )
         # authorization of consumer key and consumer secret
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
         
         # set access to user's access key and access secret 
-        auth.set_access_token(access_token, access_token_secret)
+        auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
         
         # calling the api 
         api = tweepy.API(auth)
