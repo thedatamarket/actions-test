@@ -91,7 +91,7 @@ try:
 
                 logger.info(f'{c_date},{c_time},{trending},{volume}')
 except Exception as e:
-  
+  print(e)
   msg("Process Stopped Need your attention")
 
 
