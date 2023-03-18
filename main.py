@@ -43,10 +43,7 @@ logger_file_handler.setFormatter(formatter)
 logger.addHandler(logger_file_handler)
 
 
-# consumer_key = "Kk6YsDOoMrZ3dleewI5PyoFBG"
-# consumer_secret = "SfNeq91UGvi7Se797iEflaOsuQ3M61nfJey04PTc3Oikz9FvBm"
-# access_token = "1392839370843906050-hWAZNtev8MaisB2xdv3hPBQ7ybkm8r"
-# access_token_secret = "ReY9BzjN82rHAApkuTi7j7cIYxv4YxVIYHimg6Gwd1jQ2"
+
 
 start = 0
 try:
