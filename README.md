@@ -1,4 +1,4 @@
-# Schedule a Python script with GitHub Actions
+# Twitter Trends Data Capture Python script Schedule in GitHub Actions
 
 **Watch the video tutorial:**
 
